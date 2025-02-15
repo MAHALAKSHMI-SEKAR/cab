@@ -1,0 +1,59 @@
+.payment-method {
+  width: 60%;
+  margin: auto;
+  
+}
+
+.payment-button {
+  width: 100%;
+  text-align: left;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  background-color: #000000fb;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.payment-content {
+  background-color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.card-details {
+  background-color: #f8f8f8;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 10px;
+}
+
+
+.fw-bold{
+  color: #000;
+  margin: 20px;
+}
+.input-box {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  background-color: #f8f8f8;
+}
+
+.yellow-button {
+  background-color: #ffee02;
+  color: #000;
+  font-weight: bold;
+  padding: 15px;
+  margin-top: 10px;
+  text-align: center;
+}
