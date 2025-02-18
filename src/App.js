@@ -14,6 +14,8 @@ import Signup from "./component/Signup";
 import Contact from "./component/Contact";
 import AboutPage from "./component/About";
 import TaxiList from "./component/TaxiList";
+import CarList from "./component/CarList";
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -36,6 +38,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup/>}></Route>
         <Route path="/taxilist" element={<TaxiList/> } />
+        <Route path="/carlist" element={<CarList/>}/>
         <Route path="/payment" element={<PaymentMethod />} />
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/about" element={<AboutPage/>}></Route>
