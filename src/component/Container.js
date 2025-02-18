@@ -152,7 +152,7 @@ const Container = () => {
           <p className='img-subtitle'>We Provide Best cars With The Best Prices. We Are Expert In Car Rental.Enjoy Your Holidays With Us. We Make Your Drive Memorable.We Care For Your Safety</p>
           <div className="button-row">
             <button type="button" className="btn" onClick={ () =>navigate('/taxilist')}>Book Self Car Drive</button>
-            <button type="button" className="btn" onClick={ () =>navigate('/')} >Car Booking</button>
+            <button type="button" className="btn" onClick={ () =>navigate('/carlist')} >Car Booking</button>
             <button type="button" className="btn" onClick={SelfDriveBike} >Book Self Bike Drive</button>
           </div>
         </div>
