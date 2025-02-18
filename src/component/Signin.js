@@ -9,17 +9,17 @@ const Signin = () => {
 
   const handleSignIn = (event) => {
     event.preventDefault(); // Prevent page reload
-
+  
+    console.log("Form Type:", formType); // Debugging
+  
     let redirectPath = "/bookurtaxi"; // Default to taxi booking
-    if (formType === "bike") {
-      redirectPath = "/selfdrivebike";
-    } else if (formType === "car") {
+    if (formType === "car") {
       redirectPath = "/selfdrivecar";
     }
-
+  
     navigate(redirectPath, { state: { model, selectedPlan, amount } });
   };
-
+  
   return (
     <>
       {/* Background Banner */}

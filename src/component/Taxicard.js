@@ -46,11 +46,15 @@ const TaxiCard = ({ image, model, gear, capacity, fuel }) => {
 
         <button
           className="book-btn"
-          onClick={() =>
+          onClick={() => {
+            if (!selectedPlan || !amount) {
+              alert("Please select a plan before booking!");
+              return;
+            }
             navigate("/signin", {
-              state: { model, selectedPlan, amount, formType: "taxi" }, // Pass formType
-            })
-          }
+              state: { model, selectedPlan, amount, formType: "car" }, // Pass formType
+            });
+          }}
         >
           Book Taxi
         </button>
