@@ -12,6 +12,9 @@ import PaymentMethod from "./component/PaymentMethod";
 import SelfDriveCar from "./component/SelfDriveCar";
 import SelfDriveBike from "./component/SelfDriveBike";
 import PrivateRoute from "./component/PrivateRoute"; 
+import Signup from "./component/Signup";
+import Contact from "./component/Contact";
+import AboutPage from "./component/About";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -32,9 +35,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Container />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup/>}></Route>
         <Route path="/taxilist" element={<TaxiList />} />
         <Route path="/payment" element={<PaymentMethod />} />
-
+        <Route path="/contact" element={<Contact/>}></Route>
+        <Route path="/about" element={<AboutPage/>}></Route>
         {/* Protected Routes */}
         <Route
           path="/bookurtaxi"

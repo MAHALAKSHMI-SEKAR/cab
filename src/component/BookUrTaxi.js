@@ -1,10 +1,25 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom"; 
 import "./bookurtaxi.css";
 import bg from "../image/page-title.png";
 import { Link } from "react-router-dom";
 
 const BookUrTaxi = () => {
   const [selectedType, setSelectedType] = useState("single");
+  const location = useLocation();
+  const { model, selectedPlan, amount } = location.state || {};
+
+  const getPlanDetails = (plan) => {
+    if (plan === "8 hr") {
+      return "You get 288 km free. After 8 hours, an additional charge of ₹8 per km will apply.";
+    } else if (plan === "24 hr") {
+      return "You get 349 km free. After 24 hours, an additional charge of ₹8 per km will apply.";
+    }else if(plan === 'Infinity'){
+      return "You get unlimited kilometers for the selected duration with no additional charges.";
+    }
+    return "";
+  };
+
 
   return (
     <>
@@ -27,17 +42,33 @@ const BookUrTaxi = () => {
         </p>
 
         <div className="taxi-input-group">
-          <select className="taxi-select">
-            <option disabled>Choose Taxi Type</option>
-            <option>Hybrid taxi</option>
-            <option>SUV</option>
-            <option>Convertible</option>
-          </select>
+          <input type="text" value={model || ""} className="taxi-input" readOnly />
         </div>
 
         <div className="taxi-input-group">
           <input type="text" placeholder="Start Destination" className="taxi-input" />
           <input type="text" placeholder="End Destination" className="taxi-input" />
+        </div>
+
+        <div className="taxi-input-group">
+          <select className="taxi-select" disabled>
+            <option>{selectedPlan || "Choose Your Plan"}</option>
+          </select>
+        </div>
+
+        {selectedPlan === "8 hr" || selectedPlan === "24 hr" ? (
+          <div className="taxi-input-group">
+            <input
+              type="text"
+              className="taxi-input"
+              value={getPlanDetails(selectedPlan)}
+              readOnly
+            />
+          </div>
+        ) : null}
+
+        <div className="taxi-input-group">
+          <input type="text"  placeholder="Amount" className="taxi-input" value={amount || ""} readOnly />
         </div>
 
         <div className="taxi-radio-group">

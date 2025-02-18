@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import "./taxicard.css";
 import { useNavigate } from "react-router-dom";
+import "./taxicard.css";
 
-const TaxiCard = ({ image, title, location, price, mileRate, trafficRate, passengers }) => {
-  const navigate =useNavigate();
-  const handle=()=>{
-    navigate('/bookurtaxi');
-  }
+const TaxiCard = ({ image, model, gear, capacity, fuel }) => {
+  const navigate = useNavigate();
+  const [amount, setAmount] = useState("");
+  const [selectedPlan, setSelectedPlan] = useState("");
+
+  const handlePlanChange = (event) => {
+    const plan = event.target.value;
+    setSelectedPlan(plan);
+    if (plan === "8 hr") setAmount("₹1500");
+    else if (plan === "24 hr") setAmount("₹2000");
+    else if (plan === "Infinity") setAmount("₹5000");
+  };
+
   return (
-    <>
     <motion.div
       className="card"
       initial={{ opacity: 0, x: -50 }}
@@ -17,20 +24,38 @@ const TaxiCard = ({ image, title, location, price, mileRate, trafficRate, passen
       transition={{ duration: 0.6 }}
     >
       <div className="card-image-section">
-        <img src={image} alt={title} className="card-photo" />
-        
+        <img src={image} alt={model} className="card-photo" />
       </div>
+
       <div className="card-info">
-      <div className="card-icon"></div>
-        <h3 className="card-heading">{title}</h3>
-        <p className="card-details">Price: ₹{price.toFixed(2)}</p>
-        <p className="card-details">Mile Rate: ₹{mileRate.toFixed(2)}</p>
-        <p className="card-details">Traffic Rate: ₹{trafficRate.toFixed(2)}</p>
-        <p className="card-details">Passengers: {passengers}</p>
-        <button className="book-btn" onClick={handle}>BOOK TAXI</button>
+        <div className="card-icon"></div>
+        <h3 className="tcard-heading">{model}</h3>
+        <p className="tcard-details">Gear: {gear}</p>
+        <p className="tcard-details">Capacity: {capacity}</p>
+        <p className="tcard-details">Fuel: {fuel}</p>
+
+        <div className="plan-selection">
+          <label className="tcard-details">Select Plan:</label>
+          <select className="plan-dropdown" onChange={handlePlanChange}>
+            <option>Choose Your Plan</option>
+            <option value="8 hr">8 Hours</option>
+            <option value="24 hr">24 Hours</option>
+            <option value="Infinity">Unlimited</option>
+          </select>
+        </div>
+
+        <button
+          className="book-btn"
+          onClick={() =>
+            navigate("/signin", {
+              state: { model, selectedPlan, amount, formType: "taxi" }, // Pass formType
+            })
+          }
+        >
+          Book Taxi
+        </button>
       </div>
     </motion.div>
-    </>
   );
 };
 

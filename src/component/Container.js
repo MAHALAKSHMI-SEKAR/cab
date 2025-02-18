@@ -92,11 +92,6 @@ const Container = () => {
   const controls = useAnimation();
   const navigate = useNavigate();
 
-  const handleNavigation = (destination) => {
-    localStorage.setItem("redirectAfterLogin", destination); // Store intended route
-    navigate("/signin"); // Redirect to Sign-In
-  };
-
   const filteredCars =
     selectedCategory === "All"
       ? carData
@@ -154,9 +149,9 @@ const Container = () => {
           <h1 className='img-title'>Best Cars For The Best Journey</h1>
           <p className='img-subtitle'>We Provide Best cars With The Best Prices. We Are Expert In Car Rental.Enjoy Your Holidays With Us. We Make Your Drive Memorable.We Care For Your Safety</p>
           <div className="button-row">
-            <button type="button" className="btn" onClick={() => handleNavigation("/selfdrivecar")}>Book Self Car Drive</button>
-            <button type="button" className="btn" onClick={() => handleNavigation("/taxilist")}>Car Booking</button>
-            <button type="button" className="btn" onClick={() => handleNavigation("/selfdrivebike")}>Book Self Bike Drive</button>
+            <button type="button" className="btn" onClick={ () =>navigate('/taxilist')}>Book Self Car Drive</button>
+            <button type="button" className="btn" onClick={ () =>navigate('/taxilist')} >Car Booking</button>
+            <button type="button" className="btn" onClick={ () =>navigate('/taxilist')} >Book Self Bike Drive</button>
           </div>
         </div>
       </div>

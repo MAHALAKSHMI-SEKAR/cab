@@ -2,8 +2,11 @@ import React from "react";
 import "./bookurtaxi.css";
 import bg from "../image/page-title.png";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const SelfDriveBike = () => {
+  const location = useLocation();
+  const { model, selectedPlan, amount } = location.state || {};
   return (
     <>
       <div className="taxi-banner">
@@ -20,18 +23,26 @@ const SelfDriveBike = () => {
         <h1 className="taxi-form-title">Book Your Self Drive Bike!</h1>
 
         <div className="taxi-input-group">
-          <select className="taxi-select">
-            <option disabled selected hidden>Choose Bike Type</option>
-            <option>Scooter</option>
-            <option>Sports Bike</option>
-            <option>Cruiser</option>
-            <option>Electric Bike</option>
-          </select>
+          <input type="text" value={model || ""} className="taxi-input" readOnly />
         </div>
 
         <div className="taxi-input-group">
           <input type="text" placeholder="Pickup Location" className="taxi-input" />
           <input type="text" placeholder="Drop-off Location" className="taxi-input" />
+        </div>
+
+        <div className="taxi-input-group">
+          <select className="taxi-select" disabled>
+            <option>{selectedPlan || "Choose Your Plan"}</option>
+          </select>
+        </div>
+
+        <div className="taxi-input-group">
+          <input type="file" placeholder="file" className="taxi-input" />
+        </div>
+
+        <div className="taxi-input-group">
+          <input type="text" placeholder="Amount" className="taxi-input" value={amount || ""} readOnly />
         </div>
 
         <div className="taxi-input-group">

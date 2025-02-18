@@ -37,6 +37,10 @@ const SelfDriveCar = () => {
         </div>
 
         <div className="taxi-input-group">
+          <input type="file" placeholder="file" className="taxi-input" />
+        </div>
+
+        <div className="taxi-input-group">
           <input type="date" className="taxi-input" />
           <select className="taxi-select" onChange={(e) => setRentalDuration(e.target.value)}>
             <option>1 day</option>
