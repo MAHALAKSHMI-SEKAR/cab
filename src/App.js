@@ -15,6 +15,7 @@ import Signup from "./component/Signup";
 import Contact from "./component/Contact";
 import AboutPage from "./component/About";
 import TaxiList from "./component/TaxiList";
+import Register from "./component/Register";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -40,6 +41,7 @@ function App() {
         <Route path="/payment" element={<PaymentMethod />} />
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/about" element={<AboutPage/>}></Route>
+        <Route path="/register" element={<Register/>}></Route>
         {/* Protected Routes */}
         <Route
           path="/bookurtaxi"

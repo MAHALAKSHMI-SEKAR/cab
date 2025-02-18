@@ -45,7 +45,9 @@ const Header = () => {
               </li>
             </ul>
             <button className="btn" type="submit">
-              Registration
+            <Link className="nav-link" to="/register">
+                  Registration
+              </Link>
             </button>
           </div>
         </div>
