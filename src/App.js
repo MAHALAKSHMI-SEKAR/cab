@@ -10,7 +10,6 @@ import Signin from "./component/Signin";
 import PaymentMethod from "./component/PaymentMethod";
 import SelfDriveCar from "./component/SelfDriveCar";
 import SelfDriveBike from "./component/SelfDriveBike";
-import PrivateRoute from "./component/PrivateRoute"; 
 import Signup from "./component/Signup";
 import Contact from "./component/Contact";
 import AboutPage from "./component/About";
@@ -44,26 +43,20 @@ function App() {
         <Route
           path="/bookurtaxi"
           element={
-            <PrivateRoute>
-              <BookUrTaxi />
-            </PrivateRoute>
-          }
+              <BookUrTaxi />          
+            }
         />
         <Route
           path="/selfdrivecar"
           element={
-            <PrivateRoute>
-              <SelfDriveCar />
-            </PrivateRoute>
-          }
+              <SelfDriveCar />          
+            }
         />
         <Route
           path="/selfdrivebike"
           element={
-            <PrivateRoute>
-              <SelfDriveBike />
-            </PrivateRoute>
-          }
+              <SelfDriveBike />          
+            }
         />
       </Routes>
       <Footer />

@@ -1,25 +1,36 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import "./signin.css";
 import bg from "../image/page-title.png";
 
 const Signin = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { formType, model, selectedPlan, amount } = location.state || {}; 
+
+  // Retrieve state from location or sessionStorage
+  const storedState = JSON.parse(sessionStorage.getItem("signinState")) || {};
+  const { formType, model, selectedPlan, amount } = location.state || storedState;
+
+  // Store state in sessionStorage when the component mounts
+  useEffect(() => {
+    if (location.state) {
+      sessionStorage.setItem("signinState", JSON.stringify(location.state));
+    }
+  }, [location.state]);
 
   const handleSignIn = (event) => {
-    event.preventDefault(); // Prevent page reload
-  
+    event.preventDefault();
+
     console.log("Form Type:", formType); // Debugging
-  
+
     let redirectPath = "/bookurtaxi"; // Default to taxi booking
     if (formType === "car") {
       redirectPath = "/selfdrivecar";
     }
-  
+
     navigate(redirectPath, { state: { model, selectedPlan, amount } });
   };
-  
+
   return (
     <>
       {/* Background Banner */}
